@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duncan Robb</title>
+<meta name="description" content="Duncan Robb — education policy strategist and President of Twenty-Ninth Parallel, LLC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #171b2e;
+    --navy-2: #222844;
+    --blue: #2f5be8;
+    --cyan: #00d6e6;
+    --coral: #ef4b45;
+    --gold: #f0ae2f;
+    --white: #ffffff;
+    --ink: #171b2e;
+    --display: "Bebas Neue", "Oswald", Impact, sans-serif;
+    --body: "Poppins", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--body); background: var(--navy); color: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--navy);
+    padding: 18px 28px 14px;
+    display: flex; flex-direction: column;
+  }
+  .logo { font-family: var(--display); font-size: 40px; letter-spacing: .5px; line-height: 1; }
+  nav { align-self: flex-end; display: flex; gap: 22px; margin-top: 14px; }
+  nav a { font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .3px; transition: color .2s; }
+  nav a:hover { color: var(--cyan); }
+  .menu-btn { display: none; position: absolute; right: 20px; top: 20px; background: none; border: 0; color: var(--white); cursor: pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--blue);
+    position: relative; overflow: hidden;
+    height: min(78vh, 720px); min-height: 460px;
+    display: flex; justify-content: center; align-items: flex-end;
+  }
+  .hero-name {
+    position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-58%);
+    text-align: center; color: var(--cyan);
+    font-family: var(--display); font-size: clamp(110px, 24vw, 340px); line-height: .85;
+    letter-spacing: 2px; user-select: none;
+  }
+  .hero-photo {
+    position: relative; z-index: 2;
+    width: min(440px, 70vw); height: 88%;
+    display: flex; align-items: flex-end; justify-content: center;
+  }
+  .hero-photo img { height: 100%; width: auto; object-fit: contain; object-position: bottom; }
+  .hero-photo .placeholder { width: 100%; height: 100%; color: var(--navy); }
+  .hero-tag {
+    position: absolute; z-index: 3; left: 28px; bottom: 26px;
+    font-family: var(--display); font-size: clamp(22px, 2.6vw, 34px); line-height: 1.05; max-width: 320px;
+  }
+  .parallel {
+    position: absolute; z-index: 3; right: 28px; bottom: 26px; text-align: right;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; opacity: .85;
+  }
+  .parallel b { display: block; font-family: var(--display); font-size: 30px; letter-spacing: 1px; font-weight: 400; }
+
+  /* ---------- Section basics ---------- */
+  section { scroll-margin-top: 110px; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+  .section-title { font-family: var(--display); font-size: clamp(48px, 7vw, 84px); line-height: 1; text-align: center; margin-bottom: 36px; }
+
+  /* ---------- About ---------- */
+  .about { background: var(--white); color: var(--ink); padding: 90px 0; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
+  .about h2 { font-family: var(--display); font-size: clamp(54px, 7vw, 96px); line-height: .9; color: var(--blue); }
+  .about h2 span { color: var(--coral); }
+  .about p { font-size: 17px; margin-bottom: 18px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+  .stat { border-top: 4px solid var(--gold); padding-top: 10px; }
+  .stat b { font-family: var(--display); font-size: 52px; line-height: 1; display: block; color: var(--navy); }
+  .stat small { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: #555b72; }
+
+  /* ---------- Work grid ---------- */
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; }
+  .tile {
+    position: relative; overflow: hidden; aspect-ratio: 4 / 3;
+    padding: 40px; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .tile .dates { font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; opacity: .9; }
+  .tile h3 { font-family: var(--display); font-size: clamp(38px, 4.6vw, 64px); line-height: .92; margin: 6px 0 8px; }
+  .tile .org { font-weight: 600; font-size: 16px; }
+  .tile .big {
+    position: absolute; top: -10px; right: 18px;
+    font-family: var(--display); font-size: clamp(120px, 16vw, 230px); line-height: 1; opacity: .16; pointer-events: none;
+  }
+  .tile .more {
+    position: absolute; inset: 0; padding: 40px; background: rgba(23, 27, 46, .94);
+    display: flex; flex-direction: column; justify-content: center; gap: 12px;
+    opacity: 0; transform: translateY(14px); transition: opacity .3s, transform .3s; font-size: 15px;
+  }
+  .tile .more h4 { font-family: var(--display); font-size: 34px; font-weight: 400; line-height: 1; color: var(--cyan); }
+  .tile:hover .more, .tile:focus-within .more { opacity: 1; transform: none; }
+  .t-navy { background: var(--navy-2); }
+  .t-blue { background: var(--blue); }
+  .t-cyan { background: var(--cyan); color: var(--navy); }
+  .t-coral { background: var(--coral); }
+  .t-gold { background: var(--gold); color: var(--navy); }
+  .t-cyan .more, .t-gold .more { color: var(--white); }
+
+  .cta-band { background: var(--coral); text-align: center; padding: 60px 20px; }
+  .btn {
+    display: inline-block; font-weight: 600; text-transform: uppercase; font-size: 14px; letter-spacing: .5px;
+    padding: 14px 28px; border: 2px solid currentColor; transition: background .2s, color .2s;
+  }
+  .cta-band .btn:hover { background: var(--white); color: var(--coral); }
+
+  /* ---------- Selected work accordion ---------- */
+  .projects { padding: 90px 0; }
+  .acc { max-width: 900px; margin: 0 auto; display: grid; gap: 10px; }
+  details { background: var(--navy-2); }
+  summary {
+    list-style: none; cursor: pointer; padding: 18px 24px 18px 58px; position: relative;
+    color: var(--gold); font-weight: 600; font-size: 16px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: "+"; position: absolute; left: 24px; top: 14px; color: var(--white);
+    font-size: 24px; font-weight: 500; transition: transform .2s;
+  }
+  details[open] summary::before { transform: rotate(45deg); }
+  summary:hover { color: var(--white); }
+  details p { padding: 0 24px 22px 58px; color: #cfd3e6; font-size: 15px; }
+  details p em { color: var(--cyan); font-style: normal; font-weight: 600; }
+
+  /* ---------- Education ---------- */
+  .edu { background: var(--white); color: var(--ink); padding: 90px 0; }
+  .edu .section-title { color: var(--navy); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .edu-card { border: 3px solid var(--navy); padding: 34px; position: relative; }
+  .edu-card .yr { position: absolute; top: 20px; right: 24px; font-family: var(--display); font-size: 28px; color: var(--coral); }
+  .edu-card h3 { font-family: var(--display); font-size: 44px; line-height: .95; color: var(--blue); margin-bottom: 8px; padding-right: 70px; }
+  .edu-card p { font-weight: 600; }
+  .edu-card small { color: #555b72; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ---------- Contact ---------- */
+  .contact { background: var(--gold); color: var(--navy); padding: 70px 20px; text-align: center; }
+  .contact h2 { font-weight: 700; font-size: clamp(22px, 3vw, 30px); margin-bottom: 8px; }
+  .contact p { margin-bottom: 26px; }
+  .contact .btn { background: var(--navy); color: var(--white); border-color: var(--navy); }
+  .contact .btn:hover { background: transparent; color: var(--navy); }
+
+  footer { text-align: center; padding: 34px 20px; font-size: 13px; color: #9aa0bd; }
+  footer .logo { color: var(--white); font-size: 30px; margin-bottom: 6px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 820px) {
+    header { padding: 16px 16px 14px; }
+    .logo { font-size: 32px; }
+    .menu-btn { display: block; }
+    nav { display: none; flex-direction: column; align-self: stretch; gap: 14px; padding-top: 10px; }
+    nav.open { display: flex; }
+    .wrap { padding: 0 16px; }
+    .about-grid, .edu-grid { grid-template-columns: 1fr; gap: 28px; }
+    .tiles { grid-template-columns: 1fr; }
+    .tile { aspect-ratio: auto; min-height: 320px; padding: 28px 20px; }
+    .tile .more { position: static; opacity: 1; transform: none; background: transparent; padding: 14px 0 0; }
+    .tile .more h4 { display: none; }
+    .t-cyan .more, .t-gold .more { color: var(--navy); }
+    .hero-tag { left: 16px; bottom: 16px; font-size: 20px; max-width: 160px; }
+    .parallel { right: 16px; bottom: 16px; }
+    .stats { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .stat b { font-size: 40px; }
+    summary { padding-left: 50px; padding-right: 16px; }
+    summary::before { left: 18px; }
+    details p { padding: 0 16px 20px 50px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#top" class="logo">Duncan Robb</a>
+  <button class="menu-btn" aria-label="Menu" aria-expanded="false" onclick="const n=document.querySelector('nav');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'))">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- Hero: giant name behind the portrait, like linmanuel.com -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-name" aria-hidden="true">DUNCAN</div>
+    <div class="hero-photo">
+      <!-- Drop a cut-out portrait (transparent PNG works best) next to this file as duncan.png -->
+      <img src="duncan.png" alt="Portrait of Duncan Robb"
+           onerror="this.replaceWith(document.getElementById('ph').content.cloneNode(true))">
+    </div>
+    <div class="hero-tag">Building high-performing public education systems.</div>
+    <div class="parallel"><b>29°N</b>Twenty-Ninth Parallel, LLC</div>
+  </section>
+
+  <template id="ph">
+    <svg class="placeholder" viewBox="0 0 400 480" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+      <circle cx="200" cy="150" r="92" fill="currentColor"/>
+      <path d="M20 480c0-110 80-190 180-190s180 80 180 190z" fill="currentColor"/>
+    </svg>
+  </template>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <h2>Teacher.<br>Policy maker.<br><span>Strategist.</span></h2>
+      <div>
+        <p>I started my career teaching sixth-grade math in Houston. Since then I've spent more than fifteen years helping state leaders turn education policy into results for kids — from drafting legislation as Chief Policy Advisor at the Idaho State Department of Education to coaching state chiefs nationwide.</p>
+        <p>Today I lead <strong>Twenty-Ninth Parallel, LLC</strong>, an independent consultancy that gives state education leaders the knowledge and skills to lead high-performing K-12 systems. My work spans assessment and accountability, education choice, pandemic recovery, workforce, and the craft of implementation itself.</p>
+        <div class="stats">
+          <div class="stat"><b>15+</b><small>Years in education</small></div>
+          <div class="stat"><b>20+</b><small>Partner organizations</small></div>
+          <div class="stat"><b>6</b><small>Federal CSP review cycles</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience tiles -->
+  <section id="experience" aria-label="Experience">
+    <div class="tiles">
+      <article class="tile t-blue" tabindex="0">
+        <span class="big">29°</span>
+        <span class="dates">Aug 2018 – Present</span>
+        <h3>President</h3>
+        <span class="org">Twenty-Ninth Parallel, LLC</span>
+        <div class="more">
+          <h4>Twenty-Ninth Parallel</h4>
+          <p>Founder of an independent consultancy serving state education leaders. Clients include Bluum, Waypoint Education Partners, CCSSO, and HCM Strategists — including a stint as interim director of CCSSO's Leadership Academy.</p>
+        </div>
+      </article>
+      <article class="tile t-coral" tabindex="0">
+        <span class="big">WP</span>
+        <span class="dates">Jan 2024 – Aug 2025</span>
+        <h3>Partner &amp; Co-Founder</h3>
+        <span class="org">Waypoint Education Partners</span>
+        <div class="more">
+          <h4>Waypoint</h4>
+          <p>Co-founded a mission-driven policy and communications firm. Led work for the US Chamber of Commerce Foundation, Harvard CEPR, Step Up For Students, the Collaborative for Student Success, and First State Educate.</p>
+        </div>
+      </article>
+      <article class="tile t-gold" tabindex="0">
+        <span class="big">HCM</span>
+        <span class="dates">Aug 2019 – Dec 2023</span>
+        <h3>Associate Principal</h3>
+        <span class="org">HCM Strategists</span>
+        <div class="more">
+          <h4>HCM Strategists</h4>
+          <p>Led the policy and implementation practice — parent research for Massachusetts DESE, learning-recovery research with the University of Mississippi, and model education-choice policy for yes. every kid.</p>
+        </div>
+      </article>
+      <article class="tile t-navy" tabindex="0">
+        <span class="big">ID</span>
+        <span class="dates">Jun 2016 – Aug 2018</span>
+        <h3>Chief Policy Advisor</h3>
+        <span class="org">Idaho State Department of Education</span>
+        <div class="more">
+          <h4>Idaho SDE</h4>
+          <p>Conceptualized, drafted, and presented bills for the State Superintendent. Built coalitions with legislators, the Governor's office, and the State Board on funding, workforce, assessment, and educator certification.</p>
+        </div>
+      </article>
+      <article class="tile t-cyan" tabindex="0">
+        <span class="big">EDI</span>
+        <span class="dates">May 2013 – May 2016</span>
+        <h3>Engagement Manager</h3>
+        <span class="org">U.S. Education Delivery Institute</span>
+        <div class="more">
+          <h4>Delivery Institute</h4>
+          <p>Partnered with states, districts, and higher-ed systems to implement standards, teacher evaluation, and assessment reforms using the Delivery Approach. Designed and led professional learning for agency leaders.</p>
+        </div>
+      </article>
+      <article class="tile t-blue" tabindex="0">
+        <span class="big">6th</span>
+        <span class="dates">May 2009 – Jun 2011</span>
+        <h3>Math Teacher</h3>
+        <span class="org">Houston Independent School District</span>
+        <div class="more">
+          <h4>Where it started</h4>
+          <p>Taught sixth-grade math in Houston ISD — the classroom experience that grounds everything since.</p>
+        </div>
+      </article>
+    </div>
+    <div class="cta-band">
+      <a class="btn" href="Duncan-Robb-Resume.docx" download>Download Full Résumé</a>
+    </div>
+  </section>
+
+  <!-- Projects accordion (mirrors the "Latest News" list) -->
+  <section class="projects" id="projects">
+    <div class="wrap">
+      <h2 class="section-title">Selected Work</h2>
+      <div class="acc">
+        <details>
+          <summary>Bipartisan Policy Center: The Future of the American Teacher</summary>
+          <p><em>With Waypoint Education Partners.</em> Contributing to and leading work on BPC's national initiative on the teaching profession.</p>
+        </details>
+        <details>
+          <summary>Harvard CEPR: Education Recovery Scorecard advocacy strategy</summary>
+          <p><em>Harvard Center for Education Policy Research.</em> Led the advocacy strategy, activating state and local advocates to use Scorecard data to push for post-pandemic recovery in their communities.</p>
+        </details>
+        <details>
+          <summary>US Chamber of Commerce Foundation: K-12 agenda &amp; Business Leads Fellowship</summary>
+          <p><em>US Chamber of Commerce Foundation.</em> Helped develop the Foundation's K-12 agenda on assessment, accountability, and innovation, and contributed to the fellowship training chamber leaders to engage on education and workforce.</p>
+        </details>
+        <details>
+          <summary>CCSSO: Interim Director, Leadership Academy</summary>
+          <p><em>Council of Chief State School Officers.</em> Provided capacity building, coaching, and strategic counsel to state education leaders nationwide.</p>
+        </details>
+        <details>
+          <summary>Check State Plans: Promise to Practice</summary>
+          <p><em>HCM Strategists &amp; Collaborative for Student Success.</em> Research and summative reporting on how states implemented their ESSA plans.</p>
+        </details>
+        <details>
+          <summary>George W. Bush Institute: Reading Forum</summary>
+          <p><em>With Waypoint Education Partners.</em> Contributed to the Bush Institute's convening on literacy policy and practice.</p>
+        </details>
+        <details>
+          <summary>Massachusetts DESE: Parent attitudes toward COVID-19 mitigation</summary>
+          <p><em>HCM Strategists.</em> Surveys and focus groups to understand parent views on school mitigation strategies and determine effective messaging.</p>
+        </details>
+        <details>
+          <summary>Bluum: Federal Charter School Program grant peer review</summary>
+          <p><em>Bluum, Inc.</em> Peer evaluation of federal CSP grant applications across six review cycles.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="edu" id="education">
+    <div class="wrap">
+      <h2 class="section-title">Education</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <span class="yr">2013</span>
+          <h3>Johns Hopkins University</h3>
+          <p>Master of Public Policy</p>
+          <small>Baltimore, MD</small>
+        </div>
+        <div class="edu-card">
+          <span class="yr">2009</span>
+          <h3>University of Oregon</h3>
+          <p>B.A., Political Science</p>
+          <small>Eugene, OR</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact (mirrors the gold "Subscribe" band) -->
+  <section class="contact" id="contact">
+    <h2>Let's build something for students.</h2>
+    <p>Available for policy, strategy, and implementation engagements with states and mission-driven organizations.</p>
+    <!-- TODO: replace with your preferred contact email -->
+    <a class="btn" href="mailto:you@example.com">Get in Touch</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="logo">Duncan Robb</div>
+  © <span id="yr">2026</span> Duncan Robb · Twenty-Ninth Parallel, LLC
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => document.querySelector('nav').classList.remove('open')));
+</script>
+</body>
+</html>
